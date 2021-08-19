@@ -1,0 +1,15 @@
+.custom-card-login {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.login-go-back {
+    margin-top: 20px;
+}

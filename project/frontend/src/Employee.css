@@ -1,0 +1,18 @@
+.employee-view {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.schedules {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
+}
+
+.mb-2 {
+    margin: auto;
+
+}

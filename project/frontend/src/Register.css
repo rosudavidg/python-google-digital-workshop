@@ -1,0 +1,19 @@
+.register {
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.custom-card-register {
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.register-success {
+
+}
+
+.register-go-back {
+    margin-top: 20px;
+}

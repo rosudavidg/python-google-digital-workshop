@@ -1,0 +1,41 @@
+ALTER TABLE users ADD CONSTRAINT users_user_roles_fk
+FOREIGN KEY (user_role_id) REFERENCES user_roles(id) ON
+DELETE CASCADE ON
+UPDATE CASCADE;
+
+
+ALTER TABLE users ADD CONSTRAINT users_company_fk
+FOREIGN KEY (company_id) REFERENCES companies(id) ON
+DELETE CASCADE ON
+UPDATE CASCADE;
+
+
+ALTER TABLE parking_lots ADD CONSTRAINT parking_lots_company_fk
+FOREIGN KEY (company_id) REFERENCES companies(id) ON
+DELETE CASCADE ON
+UPDATE CASCADE;
+
+
+ALTER TABLE cars ADD CONSTRAINT cars_users_fk
+FOREIGN KEY (user_id) REFERENCES users(id) ON
+DELETE CASCADE ON
+UPDATE CASCADE;
+
+
+ALTER TABLE schedules ADD CONSTRAINT schedules_users_fk
+FOREIGN KEY (user_id) REFERENCES users(id) ON
+DELETE CASCADE ON
+UPDATE CASCADE;
+
+
+ALTER TABLE schedules ADD CONSTRAINT schedules_parking_lots_fk
+FOREIGN KEY (parking_lot_id) REFERENCES parking_lots(id) ON
+DELETE CASCADE ON
+UPDATE CASCADE;
+
+
+ALTER TABLE activation_tokens ADD CONSTRAINT activation_tokens_users_fk
+FOREIGN KEY (user_id) REFERENCES users(id) ON
+DELETE CASCADE ON
+UPDATE CASCADE;
+

@@ -1,0 +1,16 @@
+.header {
+    display: flex;
+    background-color: rgb(255, 98, 0);
+    height: 8%;
+    box-shadow: 1px 1px 3px #888888;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.title {
+    margin: auto;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: 40px;
+    color: white;
+}

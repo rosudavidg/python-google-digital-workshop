@@ -1,0 +1,45 @@
+.button-group {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+.company-pl-card-button {
+    width: 100%;
+    margin: 10px;
+}
+
+.company-delete-parking-lots {
+    width: 100%;
+
+}
+
+.section {
+    font-size: 20px;
+}
+
+.home-employees {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+    align-content: center;
+    flex-wrap: wrap;
+    /* height: 100%; */
+}
+
+.mb-2 {
+    margin: auto;
+    
+}
+
+.home-parking-lots {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+    align-content: center;
+    flex-wrap: wrap;
+}

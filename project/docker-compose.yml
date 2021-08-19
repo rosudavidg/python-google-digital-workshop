@@ -1,0 +1,89 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - 3000:3000
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+      NODE_ENV: development
+      PROXY: "true"
+    stdin_open: true
+    networks:
+      - frontend_backend
+    volumes:
+      - "./frontend/src/.:/app/src"
+      - "./frontend/public/.:/app/public"
+
+  backend:
+    build:
+      context: ./backend
+    environment:
+      AUTH_JWT_KEY: /run/secrets/secret_auth_jwt_key
+      DATABASE_USER: /run/secrets/secret_database_user
+      DATABASE_PASSWORD: /run/secrets/secret_database_password
+      DATABASE_DB: /run/secrets/secret_database_db
+      EMAIL_ADDRESS: /run/secrets/secret_email_address
+      EMAIL_PASSWORD: /run/secrets/secret_email_password
+    secrets:
+      - secret_auth_jwt_key
+      - secret_database_user
+      - secret_database_password
+      - secret_database_db
+      - secret_email_address
+      - secret_email_password
+    ports:
+      - 5000:5000
+    volumes:
+      - ./backend:/app
+    networks:
+      - backend_database
+      - frontend_backend
+
+  database:
+    build:
+      context: ./database
+    environment:
+      POSTGRES_DB_FILE: /run/secrets/secret_database_db
+      POSTGRES_USER_FILE: /run/secrets/secret_database_user
+      POSTGRES_PASSWORD_FILE: /run/secrets/secret_database_password
+    networks:
+      - backend_database
+      - adminer_database
+    volumes:
+      - database_volume:/var/lib/postgresql/data
+    secrets:
+      - secret_database_user
+      - secret_database_password
+      - secret_database_db
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+    networks:
+      - adminer_database
+
+networks:
+  adminer_database:
+  backend_database:
+  frontend_backend:
+
+volumes:
+  database_volume:
+
+secrets:
+  secret_database_user:
+    file: ./secrets/database_user
+  secret_database_password:
+    file: ./secrets/database_password
+  secret_database_db:
+    file: ./secrets/database_db
+  secret_email_address:
+    file: ./secrets/email_address
+  secret_email_password:
+    file: ./secrets/email_password
+  secret_auth_jwt_key:
+    file: ./secrets/auth_jwt_key

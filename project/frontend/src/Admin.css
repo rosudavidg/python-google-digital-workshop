@@ -1,0 +1,12 @@
+.home-admin-approved, .home-admin-not-approved {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    /* justify-content: space-evenly; */
+}
+
+.company {
+    margin: 10px;
+}

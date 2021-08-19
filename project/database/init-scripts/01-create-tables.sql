@@ -1,0 +1,48 @@
+CREATE TABLE IF NOT EXISTS user_roles (
+    id SERIAL PRIMARY KEY,
+    role_name VARCHAR (32) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR (64) NOT NULL,
+    last_name VARCHAR (64) NOT NULL,
+    email VARCHAR (64) NOT NULL UNIQUE,
+    phone VARCHAR (11) NOT NULL,
+    pass VARCHAR (192) NOT NULL,
+    user_role_id INTEGER NOT NULL,
+    company_id INTEGER,
+    activated BOOLEAN DEFAULT FALSE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS companies (
+    id SERIAL PRIMARY KEY,
+    company_name VARCHAR (64) NOT NULL UNIQUE,
+    approved BOOLEAN DEFAULT FALSE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS parking_lots (
+    id SERIAL PRIMARY KEY,
+    company_id INTEGER NOT NULL,
+    internal_id INTEGER NOT NULL,
+    blocked BOOLEAN DEFAULT FALSE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS cars (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    license_plate VARCHAR (16) NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS schedules (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    parking_lot_id INTEGER NOT NULL,
+    sch_date DATE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS activation_tokens (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL UNIQUE,
+    token VARCHAR (64) NOT NULL
+);
